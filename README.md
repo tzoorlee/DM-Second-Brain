@@ -1,4 +1,4 @@
-# 🎲 LLM D&D Campaign Wiki
+# 🎲 LLM D&D Campaign Wiki Second Brain for Dungeon Masters
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
 
