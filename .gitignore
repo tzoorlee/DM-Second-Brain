@@ -1,0 +1,10 @@
+# Obsidian workspace cache (keep your config, ignore volatile state)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NOTE: secrets/ is intentionally NOT ignored — you want it version-controlled.
+# Just keep your campaign repo PRIVATE.
