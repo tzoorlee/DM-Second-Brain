@@ -1,4 +1,4 @@
-# 🎲 LLM D&D Campaign Wiki Second Brain for Dungeon Masters
+# 🎲 Dungeon Master Second Brain
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
 
@@ -122,7 +122,7 @@ But a long-running campaign can reach hundreds of pages, and that's when they he
 - **[qmd](https://github.com/tobi/qmd)** — a local search engine for markdown files
   (hybrid BM25 + vector search, on-device). Once your wiki passes ~100 pages, reading
   the index alone gets slow; qmd lets the agent search the wiki properly. Has both a
-  CLI and an MCP server. Install: `npm i -g @tobilu/qmd`
+  CLI and an MCP server see install instructions there.
 - **Obsidian Dataview** — query your YAML frontmatter to auto-generate dynamic lists
   (e.g. "all living NPCs in Silverbrook", "all `prepared` entities"). The templates
   already include the frontmatter Dataview needs.
