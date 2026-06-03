@@ -1,5 +1,8 @@
 # 🎲 Dungeon Master Second Brain
 
+![version](https://img.shields.io/badge/version-0.1.0-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
 
 Drop your session notes into a folder. An AI coding agent reads them, builds a
