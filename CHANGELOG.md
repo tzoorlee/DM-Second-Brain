@@ -15,7 +15,7 @@ versioning follows [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Path traversal protection in the companion dashboard's session endpoint.
+- Defensive path validation checks in the companion dashboard endpoints, protecting the entity route from path traversal.
 - Localhost security warnings and conceptual clarification regarding dashboard write permissions on `raw/`.
 
 ### Changed
