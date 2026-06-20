@@ -8,10 +8,12 @@ You write and maintain the wiki. The DM (the human) curates sources, directs the
 story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
+
 > - **Template version:** 0.1.0
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
+> - **Dashboard:** A Next.js local web app is available in `dashboard/` for live note-taking and querying.
 
 ---
 
@@ -20,7 +22,9 @@ story, and asks the questions.
 Three layers, with different permissions:
 
 ### `raw/` — The source of truth (READ-ONLY for you)
+
 Contains raw material produced by the DM:
+
 - `raw/sessions/` — notes or recaps of each session (`session-01.md`, `session-02.md`, ...)
 - `raw/house-rules.md` — custom mechanical rules of the table (see §8)
 - `raw/world-bible.md` — foundational lore and tone/style conventions (see §8)
@@ -32,7 +36,9 @@ Contains raw material produced by the DM:
 isn't derivable from `raw/`, it isn't canon. When in doubt, this is where you check.
 
 ### `wiki/` — What you build (WRITE)
+
 The interlinked wiki you maintain. Subfolders:
+
 - `world/` — world overview, global timeline, cosmology, in-world calendar
 - `locations/cities/` — cities (state + history in SEPARATE files, see §4)
 - `locations/regions/` — geographic regions
@@ -49,6 +55,7 @@ The interlinked wiki you maintain. Subfolders:
 - `log.md` — append-only chronological record of operations
 
 ### `output/` — Generated material (WRITE)
+
 Session prep, player-facing recaps, "previously on..." summaries, narrative maps.
 NOT canon: it is derived from the wiki.
 
@@ -57,21 +64,26 @@ NOT canon: it is derived from the wiki.
 ## 2. THE OPERATIONS
 
 ### ONBOARDING
+
 When the campaign starts from scratch or when laying new world foundations.
 Create the structure, initialize `index.md` and `log.md`, set up the in-world
 calendar in `world/calendar.md`.
 
 ### DESIGN INGEST — worldbuilding BEFORE play
+
 When the DM adds material to `raw/worldbuilding/` to build the world before the
 first session. Identical to session ingest BUT with one key difference:
+
 - Every entity you create is born with `canon_status: prepared`.
 - Do NOT date events in the log as "happened": they are design, not history.
 - Log it with type `design` instead of `ingest`.
 - You may freely create cities, factions, NPCs, secrets, plot hooks.
-This way, from session one, the DM has a queryable world.
+  This way, from session one, the DM has a queryable world.
 
 ### INGEST — the post-session workflow
+
 When the DM adds a file to `raw/sessions/`. Proceed as follows:
+
 1. **Read** the full session recap.
 2. **Discuss** the key takeaways with the DM before writing: who appeared, what
    changed, which threads moved. Wait for confirmation on ambiguous points.
@@ -88,8 +100,10 @@ When the DM adds a file to `raw/sessions/`. Proceed as follows:
 A session typically touches 10-20 pages. Proceed one session at a time.
 
 ### QUERY — prep and consultation
+
 When the DM asks a question ("which open threads involve the thieves' guild?",
 "what do the PCs know about the cult?"):
+
 1. Read `index.md` to find relevant pages. **If `qmd` is installed, you may use it
    to search the wiki instead** (useful once the wiki grows past ~100 pages); shell
    out to its CLI or use its MCP server. Otherwise, the index is enough.
@@ -100,7 +114,9 @@ When the DM asks a question ("which open threads involve the thieves' guild?",
 6. Valuable answers (a recap, a thread analysis) can be saved to `output/` on request.
 
 ### LINT — consistency check (the most important function)
+
 When the DM asks for it periodically. Scan and report by severity:
+
 - **Timeline contradictions** (a dead NPC reappearing alive)
 - **Broken wikilinks** or orphan pages with no inbound links
 - **NPCs without motivation** consistent with their faction
@@ -109,8 +125,8 @@ When the DM asks for it periodically. Scan and report by severity:
 - **Current state misaligned** with chronology (history says X, state says Y)
 - **`prepared` entities never promoted** despite PCs interacting with them (and vice versa)
 - **Gaps** that might be needed before the next session
-Report by severity (critical / medium / minor) and propose fixes. Do not apply them
-without the DM's consent.
+  Report by severity (critical / medium / minor) and propose fixes. Do not apply them
+  without the DM's consent.
 
 ---
 
@@ -120,13 +136,13 @@ Every wiki page starts with YAML frontmatter:
 
 ```yaml
 ---
-type: npc            # npc | pc | city | region | dungeon | faction | quest | item | event | secret
+type: npc # npc | pc | city | region | dungeon | faction | quest | item | event | secret
 tags: [silverbrook, guard, ally]
-status: alive        # alive | dead | active | completed | destroyed | unknown
-canon_status: prepared  # prepared (worldbuilding) | established (confirmed by play)
+status: alive # alive | dead | active | completed | destroyed | unknown
+canon_status: prepared # prepared (worldbuilding) | established (confirmed by play)
 first_seen: session-03
 last_updated: session-14
-pg_known: true       # do the PCs know about this entity?
+pg_known: true # do the PCs know about this entity?
 ---
 ```
 
@@ -141,7 +157,9 @@ A campaign is a knowledge base that EVOLVES. You must track both **what is true 
 and **how we got there**. Two approaches depending on the entity:
 
 ### NPCs and Characters → all in one page
+
 They are self-contained entities. Structure:
+
 ```
 # Aldric Ironwood
 [frontmatter]
@@ -160,7 +178,9 @@ They are self-contained entities. Structure:
 ```
 
 ### Cities, Regions, Factions → state and history in SEPARATE files
+
 They grow too large. For each city use two linked files:
+
 - `cities/silverbrook.md` → CURRENT STATE (who rules now, present situation,
   resident NPCs, factions present, notable places). Compact and always current.
 - `cities/silverbrook-history.md` → CHRONOLOGY (dated events that changed the city
@@ -182,6 +202,7 @@ visited, or be found in flames because of their choices. So every entity has a
   changed except by new in-play events.
 
 **Rules for `canon_status`:**
+
 - Material from `raw/worldbuilding/` → born `prepared`.
 - Material from `raw/sessions/` → born `established` (it happened at the table).
 - When the PCs interact with a `prepared` entity, session ingest **promotes** it to `established`.
@@ -196,34 +217,42 @@ visited, or be found in flames because of their choices. So every entity has a
 The PCs don't know everything. You manage the narrative "fog of war" on two levels:
 
 ### Minor secrets → inline in the entity's page
+
 A `## Secrets (DM only)` section at the bottom of the page. For local details:
 "the innkeeper is a spy", "this sword is cursed". Always mark with `DM only`.
 
 ### Major plots → dedicated files in `secrets/`
+
 For reveals that support entire narrative arcs ("the king is secretly a shapeshifter",
 "the cult wants to wake the buried god"). One page per secret plot.
 
 ### Promotion rule
+
 When a session reveals a secret to the PCs:
+
 1. Move the information from the secret area (inline or `secrets/`) to the public wiki.
 2. Update `pg_known: true` where needed.
 3. Record in `log.md` when and how it was revealed.
-A secret never disappears: it becomes known history.
+   A secret never disappears: it becomes known history.
 
 ---
 
 ## 7. INDEX AND LOG
 
 ### `index.md` — content-oriented
+
 A catalog of every page, organized by category (NPCs, cities, factions, quests...),
 each with a link and a one-line summary. You update it on every ingest. It is the
 first thing you read when answering a query.
 
 ### `log.md` — chronological, append-only
+
 Each line starts with a consistent prefix to stay parseable:
+
 ```
 ## [1492-Kythorn-12 | session-14] ingest — Assault on the Silverbrook keep
 ```
+
 (in-world date + session number + operation type + title). So
 `grep "^## \[" log.md | tail -5` gives you the last 5 operations.
 
@@ -235,13 +264,17 @@ Three files in `raw/` define the campaign's foundations. They are **canon** on p
 with sessions: you read them, never modify them, and consult them at the right moments.
 
 ### `raw/house-rules.md` — mechanical rules
+
 The table's house rules (crits, rest, magic, death, character creation). Use them when:
+
 - a session event touches a mechanic (a crit, a resurrection, a rest)
 - you need to check whether something is consistent with the table's rules
 - in **lint**, flag if a session contradicts a house rule
 
 ### `raw/world-bible.md` — lore and style
+
 Foundational world truths and tone/naming conventions. Use them when:
+
 - creating a new entity: respect naming conventions and lore pillars
 - writing descriptions: stick to the established tone
 - in **lint**, flag if something violates an immutable lore pillar (e.g. an NPC using
@@ -251,6 +284,7 @@ Foundational world truths and tone/naming conventions. Use them when:
 on your own — flag it to the DM. It might be a DM mistake or an intentional change.
 
 ### `raw/srd/` — system material (SRD 5.1)
+
 Monsters, spells, rules from SRD 5.1 (CC-BY-4.0 license). Canon as **system rule**,
 distinct from the DM's world (world-bible) and the DM's variants (house-rules). When
 creating a monster or NPC, you may base it on an SRD statblock. Don't confuse it with

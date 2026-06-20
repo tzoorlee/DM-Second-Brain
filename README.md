@@ -117,6 +117,24 @@ just copy `CLAUDE.md` to the file your agent expects:
 - Gemini CLI → `GEMINI.md`
 - OpenAI Codex → `AGENTS.md`
 
+## Companion Dashboard (GUI)
+
+The campaign includes a local, web-based graphical interface designed to be used *live during sessions* to search the wiki, view NPC profiles (with DM-only secrets), and write session notes with autocompletion for `[[wikilinks]]`.
+
+To start the dashboard:
+1. Navigate to the `dashboard/` folder.
+2. Install dependencies (already initialized):
+   ```bash
+   cd dashboard && npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+When you click **Save Session Recap**, the notes are saved directly to `raw/sessions/` ready for your AI agent to ingest.
+
 ## Optional tools (as your wiki grows)
 
 None of these are needed to start — the `index.md` catalog is enough at small scale.
