@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.1.0-blue)
+![version](https://img.shields.io/badge/version-0.2.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -86,6 +86,7 @@ explore the graph view** to understand how the pieces connect.
 
 ```
 your-campaign/
+├── dashboard/              # Next.js companion dashboard (live session tool)
 ├── raw/                    # YOU write here — the agent never edits it (source of truth)
 │   ├── sessions/           # session-01.md, session-02.md, ...
 │   ├── worldbuilding/      # design material (becomes "prepared" entities)

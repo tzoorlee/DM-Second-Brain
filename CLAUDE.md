@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 
-> - **Template version:** 0.1.0
+> - **Template version:** 0.2.0
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
