@@ -8,8 +8,8 @@ You write and maintain the wiki. The DM (the human) curates sources, directs the
 story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
-
-> - **Template version:** 0.2.0
+>
+> - **Template version:** 0.2.1
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -160,7 +160,7 @@ and **how we got there**. Two approaches depending on the entity:
 
 They are self-contained entities. Structure:
 
-```
+```text
 # Aldric Ironwood
 [frontmatter]
 ## Current State
@@ -249,7 +249,7 @@ first thing you read when answering a query.
 
 Each line starts with a consistent prefix to stay parseable:
 
-```
+```text
 ## [1492-Kythorn-12 | session-14] ingest — Assault on the Silverbrook keep
 ```
 

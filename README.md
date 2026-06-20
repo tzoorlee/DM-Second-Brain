@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.2.0-blue)
+![version](https://img.shields.io/badge/version-0.2.1-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -24,13 +24,13 @@ forget to update a backlink.
 
 But D&D needs things a generic knowledge base doesn't, and this template adds them:
 
-- **Current state vs. history** — an NPC isn't just "dead", they died *in session 14*
-  and that has consequences. The wiki tracks both what's true *now* and *how you got there*.
+- **Current state vs. history** — an NPC isn't just "dead", they died _in session 14_
+  and that has consequences. The wiki tracks both what's true _now_ and _how you got there_.
 - **Prepared vs. established** (`canon_status`) — design a whole world before you play.
   Entities you've drafted are `prepared` (still malleable); the moment the players
   touch them in-game, they become `established` (canon). Players always overturn your
   plans — this keeps design and history from blurring.
-- **Secret management** — the agent knows what the *players* know vs. what only *you*
+- **Secret management** — the agent knows what the _players_ know vs. what only _you_
   know. Minor secrets live inline; campaign-defining twists live in `secrets/`. When
   a secret is revealed in play, the agent promotes it to public history.
 
@@ -39,12 +39,14 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 ## Quick Start (5 minutes)
 
 **You need:**
+
 - [Obsidian](https://obsidian.md) — to browse the wiki (backlinks + graph view)
 - An AI coding agent — [Claude Code](https://claude.ai/code), Cursor, Gemini CLI,
   Codex, or any agent that can read/write files
 - [Git](https://git-scm.com) — strongly recommended (see "Git as a time machine" below)
 
 **Setup:**
+
 1. Click **"Use this template"** above (or clone this repo).
 2. Open the folder in your AI agent — it reads `CLAUDE.md` automatically.
    _(Using a different agent? See "Agent config" below.)_
@@ -54,6 +56,7 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
    into `raw/srd/` for monster/spell reference.
 
 **Then either:**
+
 - **Build your world first** — drop ideas into `raw/worldbuilding/`, tell the agent
   "design ingest this". You'll have a queryable world before session one.
 - **Or just play** — after each session, drop a recap in `raw/sessions/session-NN.md`
@@ -63,11 +66,11 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 
 ## The three things you'll do
 
-| Operation | When | What you say |
-|-----------|------|--------------|
-| **Ingest** | after a session | "Ingest session 4" → agent updates 10-20 pages |
-| **Query** | prepping a session | "What open threads involve the thieves' guild?" |
-| **Lint** | every few sessions | "Run a consistency check" → finds contradictions, dangling plots, orphan pages |
+| Operation  | When               | What you say                                                                   |
+| ---------- | ------------------ | ------------------------------------------------------------------------------ |
+| **Ingest** | after a session    | "Ingest session 4" → agent updates 10-20 pages                                 |
+| **Query**  | prepping a session | "What open threads involve the thieves' guild?"                                |
+| **Lint**   | every few sessions | "Run a consistency check" → finds contradictions, dangling plots, orphan pages |
 
 ---
 
@@ -84,7 +87,7 @@ explore the graph view** to understand how the pieces connect.
 
 ## Folder structure
 
-```
+```text
 your-campaign/
 ├── dashboard/              # Next.js companion dashboard (live session tool)
 ├── raw/                    # YOU write here — the agent never edits it (source of truth)
@@ -113,6 +116,7 @@ undoes it. **Keep your campaign repo private** — it contains your `secrets/`.
 
 This repo ships with `CLAUDE.md` (for Claude Code). The same rules work in any agent;
 just copy `CLAUDE.md` to the file your agent expects:
+
 - Claude Code → `CLAUDE.md` (included)
 - Cursor → `.cursor/rules/wiki.mdc`
 - Gemini CLI → `GEMINI.md`
@@ -120,21 +124,33 @@ just copy `CLAUDE.md` to the file your agent expects:
 
 ## Companion Dashboard (GUI)
 
-The campaign includes a local, web-based graphical interface designed to be used *live during sessions* to search the wiki, view NPC profiles (with DM-only secrets), and write session notes with autocompletion for `[[wikilinks]]`.
+The campaign includes a local, web-based graphical interface designed to be used _live during sessions_ to search the wiki, view NPC profiles (with DM-only secrets), and write session notes with autocompletion for `[[wikilinks]]`.
+
+> [!WARNING]
+> This dashboard is designed and intended for **local use only** (`localhost`). It lacks authentication and session-level isolation, so **do not deploy or expose this dashboard to the web**.
 
 To start the dashboard:
+
 1. Navigate to the `dashboard/` folder.
 2. Install dependencies (already initialized):
+
    ```bash
    cd dashboard && npm install
    ```
+
 3. Run the development server:
+
    ```bash
    npm run dev
    ```
+
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 When you click **Save Session Recap**, the notes are saved directly to `raw/sessions/` ready for your AI agent to ingest.
+
+> The dashboard acts as **you, the DM** — the human who curates the sources — not
+> as the agent. That's why it's allowed to write to `raw/`, even though the agent
+> itself never does (see Rule #1 in `CLAUDE.md`).
 
 ## Optional tools (as your wiki grows)
 
