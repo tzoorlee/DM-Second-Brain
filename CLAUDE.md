@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 >
-> - **Template version:** 0.2.3
+> - **Template version:** 0.3.0
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -106,7 +106,13 @@ When the DM asks a question ("which open threads involve the thieves' guild?",
 
 1. Read `index.md` to find relevant pages. **If `qmd` is installed, you may use it
    to search the wiki instead** (useful once the wiki grows past ~100 pages); shell
-   out to its CLI or use its MCP server. Otherwise, the index is enough.
+   out to its CLI or use its MCP server. Otherwise, the index is enough. With qmd:
+   - Keep one collection per layer (`wiki`, `sessions`, `worldbuilding`, `srd`) and
+     filter with `-c`, so played history, design and system rules never mix.
+   - Use `qmd search` (keyword, no model download) for proper nouns; use
+     `qmd vsearch` / `qmd query` for conceptual questions only if their models are installed.
+   - Run `qmd update` (plus `qmd embed` if you use semantic search) after every
+     ingest, so searches see the pages you just wrote.
 2. Read those pages.
 3. Synthesize an answer with `[[wikilink]]` citations.
 4. **Always distinguish** what the PCs know from what only the DM knows.

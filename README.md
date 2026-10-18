@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.2.3-blue)
+![version](https://img.shields.io/badge/version-0.3.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -40,9 +40,12 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 
 **You need:**
 
-- [Obsidian](https://obsidian.md) — to browse the wiki (backlinks + graph view)
 - An AI coding agent — [Claude Code](https://claude.ai/code), Cursor, Gemini CLI,
   Codex, or any agent that can read/write files
+- A way to browse the wiki — the included [Companion Dashboard](#companion-dashboard-gui)
+  (needs [Node.js](https://nodejs.org) and [pnpm](https://pnpm.io)), or optionally
+  [Obsidian](https://obsidian.md) for backlinks and graph view. It's all plain markdown,
+  so any editor works.
 - [Git](https://git-scm.com) — strongly recommended (see "Git as a time machine" below)
 
 **Setup:**
@@ -50,7 +53,8 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 1. Click **"Use this template"** above (or clone this repo).
 2. Open the folder in your AI agent — it reads `CLAUDE.md` automatically.
    _(Using a different agent? See "Agent config" below.)_
-3. Open the same folder in Obsidian: "Open folder as vault".
+3. (Optional) Start the [Companion Dashboard](#companion-dashboard-gui) to search
+   the wiki and take notes at the table — or open the folder in Obsidian ("Open folder as vault").
 4. Open `CLAUDE.md` and set the **output language** and **campaign name** at the top.
 5. (Optional) Download the [SRD 5.1](https://dnd.wizards.com/resources/systems-reference-document)
    into `raw/srd/` for monster/spell reference.
@@ -80,8 +84,9 @@ The [`examples/silverbrook-campaign/`](examples/silverbrook-campaign/) folder is
 complete worked example: a classic high-fantasy starter (a village, a tavern, a
 nearby crypt) after two sessions of play. It shows real `[[wikilinks]]`, the
 state/history split, a `prepared` antagonist faction that hasn't entered play yet,
-and a `secrets/` file holding the campaign's main twist. **Open it in Obsidian and
-explore the graph view** to understand how the pieces connect.
+and a `secrets/` file holding the campaign's main twist. **Open it in the dashboard**
+(`VAULT_PATH=../examples/silverbrook-campaign`, see below) **or in Obsidian's graph view**
+to understand how the pieces connect.
 
 ---
 
@@ -124,7 +129,15 @@ just copy `CLAUDE.md` to the file your agent expects:
 
 ## Companion Dashboard (GUI)
 
-The campaign includes a local, web-based graphical interface designed to be used _live during sessions_ to search the wiki, view NPC profiles (with DM-only secrets), and write session notes with autocompletion for `[[wikilinks]]`.
+The campaign includes a local, web-based graphical interface designed to be used _live during sessions_:
+
+- **Search the wiki** — ranked full-text search that tolerates typos and accents
+  ("silverbrok", "tomas" → "Tomás"), weighs titles and tags higher, and filters by
+  type, `canon_status` and status. No extra install, no models to download.
+- **View entity sheets** — with DM-only secrets, and a **Player Safe** mode that hides
+  `secrets/` pages, entities with `pg_known: false`, and inline `## Secrets (DM only)`
+  sections — from both the sheet *and* the search results, so it's safe to share your screen.
+- **Write session notes** with autocompletion for `[[wikilinks]]`.
 
 > [!WARNING]
 > This dashboard is designed and intended for **local use only** (`localhost`). It lacks authentication and session-level isolation, so **do not deploy or expose this dashboard to the web**.
@@ -159,13 +172,16 @@ When you click **Save Session Recap**, the notes are saved directly to `raw/sess
 None of these are needed to start — the `index.md` catalog is enough at small scale.
 But a long-running campaign can reach hundreds of pages, and that's when they help:
 
-- **[qmd](https://github.com/tobi/qmd)** — a local search engine for markdown files
-  (hybrid BM25 + vector search, on-device). Once your wiki passes ~100 pages, reading
-  the index alone gets slow; qmd lets the agent search the wiki properly. Has both a
-  CLI and an MCP server see install instructions there.
-- **Obsidian Dataview** — query your YAML frontmatter to auto-generate dynamic lists
-  (e.g. "all living NPCs in Silverbrook", "all `prepared` entities"). The templates
-  already include the frontmatter Dataview needs.
+- **[qmd](https://github.com/tobi/qmd)** — a local search engine for markdown files,
+  for the *agent* (the dashboard has its own search). Once your wiki passes ~100 pages,
+  reading the index alone gets slow; qmd lets the agent search the wiki properly. Has
+  both a CLI and an MCP server — see install instructions there. Mind the footprint:
+  keyword search (`qmd search`) needs no models, but semantic search downloads
+  local models on first use (`qmd vsearch` ≈ 300 MB, hybrid `qmd query` ≈ 2 GB).
+- **[Obsidian](https://obsidian.md)** — an alternative way to browse the wiki, with
+  backlinks and graph view. With the **Dataview** plugin you can query the YAML
+  frontmatter to generate dynamic lists (e.g. "all living NPCs in Silverbrook", "all
+  `prepared` entities"); the templates already include the frontmatter it needs.
 
 The agent uses qmd automatically if it's installed; otherwise it falls back to the index.
 

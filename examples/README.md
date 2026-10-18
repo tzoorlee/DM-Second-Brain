@@ -3,8 +3,10 @@
 ## silverbrook-campaign/
 A complete worked example: a classic high-fantasy starter after two sessions of play.
 
-Open it in Obsidian ("Open folder as vault", select `silverbrook-campaign`) and
-explore the **graph view** to see how entities link together.
+Open it in the Companion Dashboard (set `VAULT_PATH=../examples/silverbrook-campaign`
+in `dashboard/.env.local`) and try the **Player Safe** toggle, or open it in Obsidian
+("Open folder as vault", select `silverbrook-campaign`) and explore the **graph view**
+to see how entities link together.
 
 What it demonstrates:
 - The **state/history split** ([[silverbrook]] + [[silverbrook-history]])
