@@ -1,13 +1,13 @@
 ---
 type: npc
-tags: []
-status: alive          # alive | dead | unknown | missing
+tags: [] # lowercase-with-dashes
+status: alive # alive | dead | missing | unknown
 canon_status: prepared # prepared (worldbuilding) | established (confirmed by play)
-first_seen: session-NN
-last_updated: session-NN
-pg_known: true
-faction: ""
-location: ""
+first_seen: session-NN # session-NN | design | setup
+last_updated: session-NN # session-NN | design | setup
+pg_known: true # do the PCs know about this?
+faction: "" # [[slug]] of their faction, if any
+location: "" # [[slug]] of a region, city, location or dungeon
 ---
 
 # NPC Name
@@ -22,11 +22,17 @@ location: ""
 - **Voice/mannerisms**: (useful for the DM to roleplay them at the table)
 - **Goal**: (what they want)
 
+## Possessions
+- [[item-slug|Item Name]] — (every item whose `owner` points here)
+
+## Quests Given
+- [[quest-slug|Quest Title]] — (every quest whose `giver` points here)
+
 ## History / Chronology
 - Session NN: (what happened)
 
 ## Relationships
-- [[Other NPC]] — nature of the bond
+- [[npc-slug|Other NPC]] — nature of the bond
 
 ## Secrets (DM only)
-- (minor secrets the PCs don't know)
+- (what the PCs don't know yet; this heading is hidden in Player Safe — never translate it)

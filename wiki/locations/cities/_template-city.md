@@ -1,12 +1,13 @@
 ---
 type: city
-tags: []
-status: active         # active | destroyed | abandoned
-canon_status: prepared # prepared | established
-first_seen: session-NN
-last_updated: session-NN
-pg_known: true
-history_page: "[[city-name-history]]"
+tags: [] # lowercase-with-dashes
+status: active # active | destroyed | abandoned
+canon_status: prepared # prepared (worldbuilding) | established (confirmed by play)
+first_seen: session-NN # session-NN | design | setup
+last_updated: session-NN # session-NN | design | setup
+pg_known: true # do the PCs know about this?
+region: "" # [[slug]] of the region it lies in
+history_page: "" # [[city-slug-history]]
 ---
 
 # City Name
@@ -17,16 +18,16 @@ history_page: "[[city-name-history]]"
 - **Atmosphere**: 
 
 ## Notable Places
-- [[The ... Inn]] — 
+- [[place-slug|The ... Inn]] — one line (every location or dungeon whose `location` points here)
 
 ## Resident NPCs
-- [[NPC Name]] — role
+- [[npc-slug|NPC Name]] — role (every NPC whose `location` points here)
 
 ## Factions Present
-- [[Faction]] — influence
+- [[faction-slug|Faction Name]] — influence
 
 ## Links
-- Full chronology: [[city-name-history]]
+- Full chronology: [[city-slug-history|Chronology of City Name]]
 
 ## Secrets (DM only)
-- 
+- (what the PCs don't know yet; this heading is hidden in Player Safe — never translate it)
