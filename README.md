@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.5.1-blue)
+![version](https://img.shields.io/badge/version-0.6.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -56,8 +56,9 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 3. (Optional) Point the [Companion App](#companion-app-gui) at this folder to search
    the wiki and take notes at the table — or open the folder in Obsidian ("Open folder as vault").
 4. Open `CLAUDE.md` and set the **output language** and **campaign name** at the top.
-5. (Optional) Download the [SRD 5.1](https://dnd.wizards.com/resources/systems-reference-document)
-   into `raw/srd/` for monster/spell reference.
+5. (Optional) Download the SRD — [5.1](https://dnd.wizards.com/resources/systems-reference-document)
+   for the 2014 rules or 5.2.1 for the 2024 rules — into `raw/srd/` for monster/spell
+   reference, and note the edition in `raw/world-bible.md` → `## Campaign`.
 
 **Then either:**
 
@@ -75,6 +76,10 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 | **Ingest** | after a session    | "Ingest session 4" → agent updates 10-20 pages                                 |
 | **Query**  | prepping a session | "What open threads involve the thieves' guild?"                                |
 | **Lint**   | every few sessions | "Run a consistency check" → finds contradictions, dangling plots, orphan pages |
+
+Between sessions you can also add **design** to `raw/worldbuilding/` (plans, ingested as
+`prepared`) or an **interlude** to `raw/interludes/` (what happened off-screen, ingested
+as `established` and unknown to the PCs).
 
 ---
 
@@ -97,6 +102,8 @@ your-campaign/
 ├── raw/                    # YOU write here — the agent never edits it (source of truth)
 │   ├── sessions/           # session-01.md, session-02.md, ...
 │   ├── worldbuilding/      # design material (becomes "prepared" entities)
+│   ├── interludes/         # what happened off-screen between sessions
+│   ├── setting/            # reference for a published setting or an inherited world
 │   ├── srd/                # SRD 5.1 system reference (you download it)
 │   ├── house-rules.md      # your mechanical variants
 │   └── world-bible.md      # your lore pillars and tone

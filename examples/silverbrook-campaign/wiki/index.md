@@ -2,7 +2,7 @@
 
 > Example campaign. Shows the system filled in after 2 sessions of play,
 > plus some `prepared` (designed, not-yet-played) material.
-> Built with DM-Second-Brain v0.5.1
+> Built with DM-Second-Brain v0.6.0
 
 ## World
 - [[calendar|In-World Calendar]] — in-world calendar (Harptos, year 1492 DR)

@@ -6,6 +6,19 @@ last_updated: session-02
 
 # World Bible — The Vale of Silverbrook
 
+## Campaign
+- **Name**: The Vale of Silverbrook
+- **Output language**: English
+- **Starting level**: (not set)
+- **Rules edition**: (not set)
+- **Start date in the world**: Kythorn 10 (year not set)
+
+## Setting
+- **World**: Homebrew
+- **Sources**: (none)
+- **Deviations from the published canon**:
+  - (none)
+
 ## Tone and Atmosphere
 - Classic high fantasy. Hopeful but with real stakes. Heroism is possible.
 - Violence has weight; avoid grimdark nihilism.
@@ -18,6 +31,12 @@ last_updated: session-02
 ## Naming Conventions
 - Human settlements: nature compounds (Silverbrook, Oakhollow, Thornfield).
 - Dwarven names: hard consonants (Durgan, Brakka).
+
+## Basic Geography
+- (not set yet)
+
+## Cosmology
+- (not set yet)
 
 ## Things that do NOT exist in this world
 - No firearms. No printing press. No widespread literacy.

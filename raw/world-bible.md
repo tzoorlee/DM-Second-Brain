@@ -8,6 +8,20 @@ last_updated: setup
 
 > Foundational world truths and tone/style conventions.
 > CANON: the agent abides by them for consistency, but never modifies them.
+> Keep the "## " headings in English: the companion app's World Studio finds sections by them.
+
+## Campaign
+- **Name**: (the campaign's name)
+- **Output language**: (the language the agent writes the wiki in)
+- **Starting level**: (e.g. 1)
+- **Rules edition**: (SRD 5.1 | SRD 5.2.1 | none)
+- **Start date in the world**: (e.g. 1492-Kythorn-10)
+
+## Setting
+- **World**: (Homebrew | Published: <name> | Mixed: <name> + homebrew)
+- **Sources**: (books and adventures you use)
+- **Deviations from the published canon**:
+  - (one per line; they win over published lore)
 
 ## Tone and Atmosphere
 - (e.g. dark fantasy, low-magic, political; what to avoid)

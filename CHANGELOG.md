@@ -11,6 +11,23 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.6.0] - 2026-10-18
+
+### Added
+
+- **Interludes**: `raw/interludes/` for what the DM decides happened off-screen between sessions, and the agent's **INTERLUDE INGEST** operation (pages become `established`, unknown to the PCs unless the interlude says otherwise).
+- **Setting reference**: `raw/setting/` for a published setting (notes, excerpts from books you own) or the history of another campaign whose world you reuse.
+- World-bible sections `## Campaign` (name, language, starting level, rules edition, start date) and `## Setting` (homebrew, published or mixed; sources; deviations from the published canon).
+- Design after the first session: new material comes as dated files in `raw/worldbuilding/`, ingested once each.
+- Lint reports interludes and dated worldbuilding files never ingested.
+
+### Changed
+
+- The world-bible's `## ` headings are fixed English markers, like `## Secrets (DM only)`: the companion app's World Studio edits sections by them.
+- `.dm-second-brain/` is the companion app's working folder; the agent ignores it.
+
+The vault format stays **1**.
+
 ## [0.5.1] - 2026-10-18
 
 ### Fixed
