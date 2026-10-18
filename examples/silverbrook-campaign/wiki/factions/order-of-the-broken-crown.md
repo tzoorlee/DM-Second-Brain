@@ -25,13 +25,13 @@ history_page: "[[order-of-the-broken-crown-history]]"
 - (to be designed — a charismatic leader is planned)
 
 ## Holdings
-- _(none yet)_
+- (none yet)
 
 ## Possessions
-- _(none yet)_
+- (none yet)
 
 ## Quests Given
-- _(none yet)_
+- (none yet)
 
 ## Relations with Other Factions
 - Opposed to [[silverbrook|Silverbrook]]'s peace, though the village doesn't know they exist.

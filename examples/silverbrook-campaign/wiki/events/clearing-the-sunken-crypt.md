@@ -25,4 +25,4 @@ adventure: "[[eastern-hills-mystery]]"
 - [[elder-maren|Elder Maren]] was visibly shaken by the broken crown.
 
 ## Secrets (DM only)
-- _(none yet)_
+- (none yet)

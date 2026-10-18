@@ -28,7 +28,7 @@ portrait — and is a key to waking him fully.
 - The [[order-of-the-broken-crown|Order of the Broken Crown]] (prepared, not yet introduced) wants the king back.
 
 ## Revealed So Far
-- _(nothing yet: the PCs have seen the broken crown symbol, not what it means)_
+- (nothing yet: the PCs have seen the broken crown symbol, not what it means)
 
 ## Promotion Notes
 - When the PCs learn Maren's past → move that part to her public page, set `pg_known: true`.

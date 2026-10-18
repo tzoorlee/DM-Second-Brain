@@ -26,7 +26,7 @@ the village together through lean years.
 - **Goal**: keep Silverbrook safe; quietly, keep the past buried
 
 ## Possessions
-- _(none yet)_
+- (none yet)
 
 ## Quests Given
 - [[the-eastern-hills|The Eastern Hills]] — hired the party in session 1

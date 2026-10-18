@@ -24,10 +24,10 @@ Keeper of [[the-mended-kettle|The Mended Kettle]] in [[silverbrook|Silverbrook]]
 - **Goal**: a full common room and a quiet village
 
 ## Possessions
-- _(none yet)_
+- (none yet)
 
 ## Quests Given
-- _(none yet)_
+- (none yet)
 
 ## History / Chronology
 - Session 1: lodged the party; first mentioned the missing livestock.
@@ -37,4 +37,4 @@ Keeper of [[the-mended-kettle|The Mended Kettle]] in [[silverbrook|Silverbrook]]
 - [[elder-maren|Elder Maren]] — old friend
 
 ## Secrets (DM only)
-- _(none yet)_
+- (none yet)

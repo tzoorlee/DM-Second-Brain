@@ -29,4 +29,4 @@ low-beamed, and smelling of barley stew. The party's home base in the village.
 - Session 2: free lodging granted as thanks for clearing the [[sunken-crypt|Sunken Crypt]].
 
 ## Secrets (DM only)
-- _(none yet)_
+- (none yet)

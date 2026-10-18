@@ -24,16 +24,16 @@ A jittery farmer from the eastern edge of [[silverbrook|Silverbrook]].
 - **Goal**: keep his animals and his sanity
 
 ## Possessions
-- _(none yet)_
+- (none yet)
 
 ## Quests Given
-- _(none yet)_
+- (none yet)
 
 ## History / Chronology
 - Session 1: burst into the tavern claiming he saw "pale figures" near his barn.
 
 ## Relationships
-- _(none yet)_
+- (none yet)
 
 ## Secrets (DM only)
-- _(none yet)_
+- (none yet)

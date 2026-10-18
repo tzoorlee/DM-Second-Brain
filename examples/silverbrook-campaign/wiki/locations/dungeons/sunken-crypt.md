@@ -24,7 +24,7 @@ collapsed, its entrance hidden among the rocks.
 - The broken crown sigil scratched into the stone
 
 ## Inhabitants
-- _(none left: the skeletons were destroyed in session 2)_
+- (none left: the skeletons were destroyed in session 2)
 
 ## History / Chronology
 - Session 2: the party fought through skeletons and recovered the locket.

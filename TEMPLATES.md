@@ -92,7 +92,7 @@ NPCs, PCs, places, dungeons and items keep their chronology inside their own pag
 4. Fill the frontmatter: the type's `status` values, `prepared` or `established`
    depending on the source, links as `"[[slug]]"`. Delete the inline `#` comments.
 5. Write the sections in the template's order. Keep every heading, even when its
-   content is `- _(none yet)_`. Link every entity you name.
+   content is `- (none yet)`. Link every entity you name.
 6. **Add the back-links**: each link field in the card says which list on the other
    page must link back here. For example, an NPC with `location: "[[silverbrook]]"` is
    added to Silverbrook's `## Resident NPCs`.
