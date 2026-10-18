@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 >
-> - **Template version:** 0.3.1
+> - **Template version:** 0.3.2
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -160,8 +160,9 @@ Write in the configured output language. Keep proper nouns exactly as the DM use
 - Frontmatter keys and their keyword values (`type: npc`, `status: alive`,
   `canon_status: prepared`, `pg_known: true`) are a schema, not prose. Never translate them.
 - The heading `## Secrets (DM only)` is the marker that Player Safe mode hides. Write it
-  exactly like that. A translated heading such as `## Segreti (solo DM)` would show the
-  secrets to the players.
+  exactly like that. As a safety net the dashboard also hides any level-2 heading naming
+  the DM or GM (such as `## Segreti (solo DM)`), but a heading without that word, such as
+  `## Segreti`, would show the secrets to the players.
 
 ---
 

@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.3.1-blue)
+![version](https://img.shields.io/badge/version-0.3.2-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -136,7 +136,8 @@ The campaign includes a local, web-based graphical interface designed to be used
   type, `canon_status` and status. No extra install, no models to download.
 - **View entity sheets** — with DM-only secrets, and a **Player Safe** mode that hides
   `secrets/` pages, entities with `pg_known: false`, and inline `## Secrets (DM only)`
-  sections — from both the sheet *and* the search results, so it's safe to share your screen.
+  sections — from the sheet, the search results *and* the server API, so it's safe to share
+  your screen.
 - **Write session notes** with autocompletion for `[[wikilinks]]`.
 
 > [!WARNING]

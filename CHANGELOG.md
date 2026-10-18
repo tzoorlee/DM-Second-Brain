@@ -11,6 +11,18 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.3.2] - 2026-10-18
+
+### Security
+
+- **Player Safe is now enforced on the server.** `/api/entity` is player-safe by default; the full page requires `mode=dm`. In player mode it answers 404 for `secrets/` pages and entities with `pg_known: false`, the same as for missing pages. It also removes the DM-only section before the text leaves the server. Before this, anyone who knew a page path could read its secrets.
+- `/api/entity` only serves pages the search index lists. `index.md`, `log.md`, `_template-*.md` and anything outside `wiki/` can no longer be read through it. It no longer returns the page's absolute file path.
+
+### Changed
+
+- DM-only sections are also recognized by any level-2 heading that names the DM or GM, such as `## Segreti (solo DM)`. This is a safety net for wikis written in other languages. `## Secrets (DM only)` stays the convention.
+- Switching between DM View and Player Safe reloads the open page in the new mode, and closes it if players may not see it.
+
 ## [0.3.1] - 2026-10-18
 
 ### Changed
