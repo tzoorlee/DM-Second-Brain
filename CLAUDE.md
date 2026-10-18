@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 >
-> - **Template version:** 0.5.0
+> - **Template version:** 0.5.1
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -162,7 +162,7 @@ When the DM asks for it periodically. Scan and report by severity:
 fields, `status` values, sections, link fields and back-links. Follow the type's card
 whenever you create or update a page. It is at the template's root; in a campaign created
 by the companion app it may be missing, so read it at
-https://github.com/tzoorlee/DM-Second-Brain/blob/v0.5.0/TEMPLATES.md.
+https://github.com/tzoorlee/DM-Second-Brain/blob/v0.5.1/TEMPLATES.md.
 
 In short:
 
@@ -212,13 +212,23 @@ and **how we got there**. Two approaches depending on the entity:
 They are self-contained entities. Structure:
 
 ```text
+---
+type: npc
+status: dead
+faction: "[[silverbrook-guard]]"
+location: "[[silverbrook]]"
+[...the other fields of the npc template]
+---
 # Aldric Ironwood
-[frontmatter]
 ## Current State
 - Dead (session 14)
 - Legacy: his soldiers are now hostile to the party
 ## Profile
 [appearance, personality, voice, mannerisms]
+## Possessions
+- [[aldrics-longsword|Aldric's Longsword]] — taken by the PCs (session 14)
+## Quests Given
+- (none)
 ## History / Chronology
 - Sessions 1-13: captain of the [[silverbrook|Silverbrook]] guard
 - Session 14: killed by the PCs during the assault on the keep
@@ -285,7 +295,8 @@ For reveals that support entire narrative arcs ("the king is secretly a shapeshi
 When a session reveals a secret to the PCs:
 
 1. Move the information from the secret area (inline or `secrets/`) to the public wiki.
-2. Update `pg_known: true` where needed.
+2. Set `pg_known: true` on the public pages that are now known. The `secrets/` page
+   itself keeps `pg_known: false` and becomes `status: partly-revealed` or `revealed`.
 3. Record in `log.md` when and how it was revealed.
    A secret never disappears: it becomes known history.
 
