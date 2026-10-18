@@ -14,3 +14,7 @@
 - Created [[sunken-crypt]], [[tarnished-silver-locket]], [[clearing-the-sunken-crypt]].
 - Broken crown symbol surfaced; linked to secret [[the-broken-crown]].
 - Note: [[order-of-the-broken-crown]] caused the undead, still hidden from PCs.
+
+## [setup] migration — pages aligned to TEMPLATES.md (template 0.5.0)
+- Links by slug, new sections and link fields, [[the-mended-kettle]] moved to locations/places/.
+- Created [[eastern-hills-mystery]] (adventure) and [[order-of-the-broken-crown-history]] from existing pages; no new lore.

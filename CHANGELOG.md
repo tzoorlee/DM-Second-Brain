@@ -11,6 +11,27 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.5.0] - 2026-10-18
+
+### Added
+
+- **`TEMPLATES.md`**: the rules for every page type, followed by both the DM and the agent: slugs, links, base frontmatter, one card per type (folder, fields, `status` values, sections, back-links), how to add a type.
+- **Templates for every type**: 19 `_template-*.md` files. New types `adventure`, `deity`, `creature`, `lore` and `faction-history`, plus templates for `world`, `region`, `region-history`, `location`, `dungeon`, `pc`, `item` and `secret`.
+- **Link fields** that connect pages: `region`, `owner`, `deity`, `giver`, `adventure`, `about`, `player`, and quest dependencies with `requires`.
+- New folders `adventures/`, `locations/places/`, `deities/`, `creatures/`, `lore/`.
+- Lint checks link fields, back-links, quest dependencies and public links to hidden pages.
+
+### Changed
+
+- **Links use the file name**: `[[slug|Shown name]]` in the text, `"[[slug]]"` in the frontmatter. Title and path links are reported by lint as old style.
+- Factions keep their chronology in a separate `faction-history` page, like cities and regions.
+- Each type has its own `status` values; quests gain `pending`, dungeons `cleared`, secrets use `hidden`, `partly-revealed`, `revealed`.
+- History pages use `subject` (`city_page` is still read) and gain `canon_status` and `pg_known`.
+- The quest template's secrets heading is now exactly `## Secrets (DM only)`.
+- The Silverbrook example follows the new rules and gains an adventure page.
+
+The vault format stays **1**: every change is additive, and existing campaigns open as before.
+
 ## [0.4.0] - 2026-10-18
 
 ### Removed

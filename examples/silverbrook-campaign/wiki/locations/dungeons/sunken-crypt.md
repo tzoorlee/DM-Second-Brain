@@ -6,6 +6,8 @@ canon_status: established
 first_seen: session-02
 last_updated: session-02
 pg_known: true
+location: ""
+faction: ""
 ---
 
 # The Sunken Crypt
@@ -18,12 +20,15 @@ collapsed, its entrance hidden among the rocks.
 - The defaced altar bears a **broken crown** symbol.
 
 ## Notable Features
-- The defaced altar — where the [[Tarnished Silver Locket]] was found
+- The defaced altar — where the [[tarnished-silver-locket|Tarnished Silver Locket]] was found
 - The broken crown sigil scratched into the stone
+
+## Inhabitants
+- (none left: the skeletons were destroyed in session 2)
 
 ## History / Chronology
 - Session 2: the party fought through skeletons and recovered the locket.
 
 ## Secrets (DM only)
 - The crypt belongs to the fallen royal line of the broken crown. The weak
-  necromancy is a symptom, not the cause. See [[The Broken Crown]].
+  necromancy is a symptom, not the cause. See [[the-broken-crown|The Broken Crown]].

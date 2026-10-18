@@ -7,16 +7,16 @@ first_seen: session-01
 last_updated: session-02
 pg_known: true
 faction: ""
-location: "[[Silverbrook]]"
+location: "[[silverbrook]]"
 ---
 
 # Elder Maren
 
-The informal leader of [[Silverbrook]]. An aging woman with sharp eyes who has kept
+The informal leader of [[silverbrook|Silverbrook]]. An aging woman with sharp eyes who has kept
 the village together through lean years.
 
 ## Current State
-- Alive, in [[Silverbrook]]. Allied with the party, but withholding something.
+- Alive, in [[silverbrook|Silverbrook]]. Allied with the party, but withholding something.
 - Legacy: knows more about the broken crown than she's admitting.
 
 ## Profile
@@ -25,12 +25,18 @@ the village together through lean years.
 - **Voice/mannerisms**: taps her cane twice before speaking when nervous
 - **Goal**: keep Silverbrook safe; quietly, keep the past buried
 
+## Possessions
+- (none yet)
+
+## Quests Given
+- [[the-eastern-hills|The Eastern Hills]] — hired the party in session 1
+
 ## History / Chronology
 - Session 1: hired the party to investigate the eastern hills.
-- Session 2: went pale when shown the broken crown symbol from the [[Sunken Crypt]].
+- Session 2: went pale when shown the broken crown symbol from the [[sunken-crypt|Sunken Crypt]].
 
 ## Relationships
-- [[Hilda Brewer]] — old friend
+- [[hilda-brewer|Hilda Brewer]] — old friend
 
 ## Secrets (DM only)
-- Maren served the old royal line that bore the broken crown. See [[The Broken Crown]].
+- Maren served the old royal line that bore the broken crown. See [[the-broken-crown|The Broken Crown]].
