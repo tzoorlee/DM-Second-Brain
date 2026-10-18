@@ -9,9 +9,11 @@ tags: [interlude]
 > elsewhere: the cult burned a village, an NPC moved to another city, a war broke out.
 >
 > It is history, not a plan: the agent processes it with the INTERLUDE INGEST operation
-> and creates or updates wiki pages as `established`, with `pg_known: false`
-> unless the interlude says the PCs know.
+> and creates or updates wiki pages as `established`. Each fact stays hidden from the
+> players unless the interlude says the PCs know that fact: on pages they already know,
+> hidden facts go in `## Secrets (DM only)`.
 > Plans and ideas that haven't happened yet belong in `raw/worldbuilding/` instead.
+> Interludes start after session 1; older history goes in the world-bible or worldbuilding.
 
 ## File name and frontmatter
 
@@ -27,7 +29,8 @@ after_session: session-14            # the last session played before it
 # The Burning of Ashford
 
 - The Order of the Broken Crown burned Ashford to the ground at night.
-- Elder Maren's sister died in the fire. The PCs don't know yet.
+  The PCs saw the smoke from the road: they know Ashford burned.
+- Elder Maren's sister died in the fire. The PCs don't know.
 ```
 
 Write freely after the frontmatter: the agent structures it.

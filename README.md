@@ -56,8 +56,9 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 3. (Optional) Point the [Companion App](#companion-app-gui) at this folder to search
    the wiki and take notes at the table — or open the folder in Obsidian ("Open folder as vault").
 4. Open `CLAUDE.md` and set the **output language** and **campaign name** at the top.
-5. (Optional) Download the [SRD 5.1](https://dnd.wizards.com/resources/systems-reference-document)
-   into `raw/srd/` for monster/spell reference.
+5. (Optional) Download the SRD — [5.1](https://dnd.wizards.com/resources/systems-reference-document)
+   for the 2014 rules or 5.2.1 for the 2024 rules — into `raw/srd/` for monster/spell
+   reference, and note the edition in `raw/world-bible.md` → `## Campaign`.
 
 **Then either:**
 

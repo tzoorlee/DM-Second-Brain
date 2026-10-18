@@ -11,10 +11,10 @@ last_updated: session-02
 - **Output language**: English
 - **Starting level**: (not set)
 - **Rules edition**: (not set)
-- **Start date in the world**: 1492-Kythorn-10
+- **Start date in the world**: Kythorn 10 (year not set)
 
 ## Setting
-- **World**: Homebrew (uses the Calendar of Harptos)
+- **World**: Homebrew
 - **Sources**: (none)
 - **Deviations from the published canon**:
   - (none)
