@@ -11,6 +11,28 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.3.1] - 2026-10-18
+
+### Changed
+
+- Dashboard UI pass. Wiki pages render proper markdown: paragraphs, numbered lists, bold, italic and inline code. The repeated title is gone.
+- The layout adapts to smaller screens. Columns narrow first, and below 1024px a tab bar shows one panel at a time.
+- Player Safe is now a two-way DM View / Player Safe switch. A visible banner shows while secrets are hidden.
+- The entity sheet shows location, faction, last update and tags. In DM View it also shows an "Unknown to PCs" badge for `pg_known: false`.
+- Following a wikilink adds a Back button. A link to a missing or hidden page appears muted instead of opening an alert.
+- The page list shows a result count and a "Clear filters" link, and it works from the keyboard. Statuses and all entity types have distinct colors.
+- Session notes:
+  - The `[[` autocomplete opens at the cursor.
+  - Unsaved notes are kept as a draft in the browser.
+  - Ctrl/Cmd+S saves.
+  - A word count is shown.
+- `CLAUDE.md`: frontmatter keys and values, and the `## Secrets (DM only)` heading, now always stay in English, whatever the output language. Before this, the agent could translate the heading, and Player Safe then showed those secrets to the players.
+- Fonts are self-hosted through `next/font` (no requests to Google from the browser). An unused stylesheet was removed.
+
+### Fixed
+
+- Dropdown menus in the wiki column were hard to read: their options now use a dark, opaque background.
+
 ## [0.3.0] - 2026-10-18
 
 ### Added

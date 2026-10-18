@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 >
-> - **Template version:** 0.3.0
+> - **Template version:** 0.3.1
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -155,6 +155,14 @@ pg_known: true # do the PCs know about this entity?
 Then the body in markdown. Use `[[wikilink]]` for EVERY reference to another entity.
 Write in the configured output language. Keep proper nouns exactly as the DM uses them.
 
+**Fixed markers stay in English, whatever the output language.** The dashboard reads them:
+
+- Frontmatter keys and their keyword values (`type: npc`, `status: alive`,
+  `canon_status: prepared`, `pg_known: true`) are a schema, not prose. Never translate them.
+- The heading `## Secrets (DM only)` is the marker that Player Safe mode hides. Write it
+  exactly like that. A translated heading such as `## Segreti (solo DM)` would show the
+  secrets to the players.
+
 ---
 
 ## 4. CURRENT STATE vs HISTORY — the key D&D rule
@@ -224,7 +232,8 @@ The PCs don't know everything. You manage the narrative "fog of war" on two leve
 
 ### Minor secrets → inline in the entity's page
 
-A `## Secrets (DM only)` section at the bottom of the page. For local details:
+A `## Secrets (DM only)` section at the bottom of the page (the heading is never
+translated, see §3; everything after it is hidden in Player Safe). For local details:
 "the innkeeper is a spy", "this sword is cursed". Always mark with `DM only`.
 
 ### Major plots → dedicated files in `secrets/`
@@ -311,6 +320,7 @@ custom-world lore.
 9. During ingest, discuss ambiguous points with the DM BEFORE writing.
 10. During lint, propose fixes but don't apply them without the DM's consent.
 11. Write in the configured output language; keep proper nouns exactly as the DM uses them.
+    Frontmatter keys and values, and the `## Secrets (DM only)` heading, always stay in English.
 12. When a secret is revealed to the PCs, promote it from secret to public history.
 13. `house-rules.md` and `world-bible.md` are canon: always respect them, never modify them.
 14. If a session contradicts the world-bible or house-rules, flag it, don't fix it yourself.
