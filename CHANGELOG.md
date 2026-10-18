@@ -11,6 +11,12 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.2.3] - 2026-10-18
+
+### Added
+
+- `VAULT_PATH` setting for the dashboard (via `dashboard/.env.local`, see `dashboard/.env.example`) to open a campaign vault stored outside the repository root. Defaults to the folder above `dashboard/`, so existing setups are unchanged.
+
 ## [0.2.2] - 2026-10-18
 
 ### Changed

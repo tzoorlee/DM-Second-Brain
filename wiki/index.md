@@ -1,7 +1,7 @@
 # Campaign Index
 
 > Catalog of all wiki pages. Maintained by the agent on every ingest.
-> Built with DM-Second-Brain v0.2.2
+> Built with DM-Second-Brain v0.2.3
 
 ## World
 

@@ -8,3 +8,6 @@ Thumbs.db
 
 # NOTE: secrets/ is intentionally NOT ignored — you want it version-controlled.
 # Just keep your campaign repo PRIVATE.
+
+# Private development notes
+TODO.md

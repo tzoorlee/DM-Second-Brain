@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.2.2-blue)
+![version](https://img.shields.io/badge/version-0.2.3-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -145,6 +145,8 @@ To start the dashboard:
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+To open a campaign stored elsewhere (e.g. the bundled example), set `VAULT_PATH` in `dashboard/.env.local` — see [`dashboard/README.md`](dashboard/README.md).
 
 When you click **Save Session Recap**, the notes are saved directly to `raw/sessions/` ready for your AI agent to ingest.
 
