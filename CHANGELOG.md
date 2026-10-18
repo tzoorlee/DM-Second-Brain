@@ -11,6 +11,14 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.5.1] - 2026-10-18
+
+### Fixed
+
+- `TEMPLATES.md`: the base-frontmatter table says that events (which use `session`) and history pages (only `last_updated`) have no `first_seen`.
+- `CLAUDE.md` §4: the NPC example has the template's `## Possessions` and `## Quests Given` sections, and shows link fields in its frontmatter.
+- `CLAUDE.md` §6: revealing a secret sets `pg_known: true` on the public pages; the `secrets/` page keeps `pg_known: false` and becomes `partly-revealed` or `revealed`.
+
 ## [0.5.0] - 2026-10-18
 
 ### Added

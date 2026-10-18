@@ -42,7 +42,7 @@ Every entity page starts with:
 | `tags` | free list, lowercase with dashes: `[silverbrook, tavern]` |
 | `status` | only for types that have one; the values are in the type's card |
 | `canon_status` | `prepared` (designed, not played yet) or `established` (confirmed at the table) |
-| `first_seen` | `session-NN`; `design` for prepared material; `setup` for onboarding pages |
+| `first_seen` | `session-NN`; `design` for prepared material; `setup` for onboarding pages. Not on events, which use `session`, nor on history pages, which have only `last_updated` |
 | `last_updated` | same values as `first_seen` |
 | `pg_known` | `true` or `false`: do the PCs know this entity exists? |
 
