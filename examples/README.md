@@ -3,8 +3,10 @@
 ## silverbrook-campaign/
 A complete worked example: a classic high-fantasy starter after two sessions of play.
 
-Open it in the Companion Dashboard (set `VAULT_PATH=../examples/silverbrook-campaign`
-in `dashboard/.env.local`) and try the **Player Safe** toggle, or open it in Obsidian
+Open it in the [companion app](https://github.com/tzoorlee/DM-Second-Brain-app). In the
+app's `.env.local`, set `VAULT_PATH` to this folder, for example
+`VAULT_PATH=../DM-Second-Brain/examples/silverbrook-campaign` with both repos side by side.
+Then try the **Player Safe** toggle. Or open it in Obsidian
 ("Open folder as vault", select `silverbrook-campaign`) and explore the **graph view**
 to see how entities link together.
 

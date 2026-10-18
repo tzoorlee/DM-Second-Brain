@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.3.2-blue)
+![version](https://img.shields.io/badge/version-0.4.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -42,7 +42,7 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 
 - An AI coding agent — [Claude Code](https://claude.ai/code), Cursor, Gemini CLI,
   Codex, or any agent that can read/write files
-- A way to browse the wiki — the included [Companion Dashboard](#companion-dashboard-gui)
+- A way to browse the wiki — the [Companion App](#companion-app-gui)
   (needs [Node.js](https://nodejs.org) and [pnpm](https://pnpm.io)), or optionally
   [Obsidian](https://obsidian.md) for backlinks and graph view. It's all plain markdown,
   so any editor works.
@@ -53,7 +53,7 @@ But D&D needs things a generic knowledge base doesn't, and this template adds th
 1. Click **"Use this template"** above (or clone this repo).
 2. Open the folder in your AI agent — it reads `CLAUDE.md` automatically.
    _(Using a different agent? See "Agent config" below.)_
-3. (Optional) Start the [Companion Dashboard](#companion-dashboard-gui) to search
+3. (Optional) Point the [Companion App](#companion-app-gui) at this folder to search
    the wiki and take notes at the table — or open the folder in Obsidian ("Open folder as vault").
 4. Open `CLAUDE.md` and set the **output language** and **campaign name** at the top.
 5. (Optional) Download the [SRD 5.1](https://dnd.wizards.com/resources/systems-reference-document)
@@ -84,8 +84,8 @@ The [`examples/silverbrook-campaign/`](examples/silverbrook-campaign/) folder is
 complete worked example: a classic high-fantasy starter (a village, a tavern, a
 nearby crypt) after two sessions of play. It shows real `[[wikilinks]]`, the
 state/history split, a `prepared` antagonist faction that hasn't entered play yet,
-and a `secrets/` file holding the campaign's main twist. **Open it in the dashboard**
-(`VAULT_PATH=../examples/silverbrook-campaign`, see below) **or in Obsidian's graph view**
+and a `secrets/` file holding the campaign's main twist. **Open it in the companion app**
+(`VAULT_PATH` set to `examples/silverbrook-campaign`, see below) **or in Obsidian's graph view**
 to understand how the pieces connect.
 
 ---
@@ -94,7 +94,6 @@ to understand how the pieces connect.
 
 ```text
 your-campaign/
-├── dashboard/              # Next.js companion dashboard (live session tool)
 ├── raw/                    # YOU write here — the agent never edits it (source of truth)
 │   ├── sessions/           # session-01.md, session-02.md, ...
 │   ├── worldbuilding/      # design material (becomes "prepared" entities)
@@ -113,7 +112,7 @@ your-campaign/
 
 ## Vault format
 
-A campaign folder is a **vault**. Apps such as the Companion Dashboard read it, and
+A campaign folder is a **vault**. Apps such as the [Companion App](#companion-app-gui) read it, and
 `dm-second-brain.json` at its root says which format it follows:
 
 ```json
@@ -151,46 +150,35 @@ just copy `CLAUDE.md` to the file your agent expects:
 - Gemini CLI → `GEMINI.md`
 - OpenAI Codex → `AGENTS.md`
 
-## Companion Dashboard (GUI)
+## Companion App (GUI)
 
-The campaign includes a local, web-based graphical interface designed to be used _live during sessions_:
+The **[DM-Second-Brain App](https://github.com/tzoorlee/DM-Second-Brain-app)** is a local web app for use _live during sessions_.
+It lives in its own repository and opens any campaign made from this template:
 
-- **Search the wiki** — ranked full-text search that tolerates typos and accents
-  ("silverbrok", "tomas" → "Tomás"), weighs titles and tags higher, and filters by
-  type, `canon_status` and status. No extra install, no models to download.
-- **View entity sheets** — with DM-only secrets, and a **Player Safe** mode that hides
-  `secrets/` pages, entities with `pg_known: false`, and inline `## Secrets (DM only)`
-  sections — from the sheet, the search results *and* the server API, so it's safe to share
-  your screen.
-- **Write session notes** with autocompletion for `[[wikilinks]]`.
+- **Search the wiki.** Ranked full-text search tolerates typos and accents
+  ("silverbrok", "tomas" → "Tomás") and weighs titles and tags higher. It filters by
+  type, `canon_status` and status.
+- **View entity sheets** with DM-only secrets. A **Player Safe** mode hides `secrets/`
+  pages, entities with `pg_known: false` and inline `## Secrets (DM only)` sections, so
+  it's safe to share your screen.
+- **Write session notes** with autocompletion for `[[wikilinks]]`. They are saved
+  straight to this campaign's `raw/sessions/`, ready for the agent to ingest.
 
-> [!WARNING]
-> This dashboard is designed and intended for **local use only** (`localhost`). It lacks authentication and session-level isolation, so **do not deploy or expose this dashboard to the web**.
+To use it, clone the app next to your campaign and point it at the campaign folder:
 
-To start the dashboard:
+```bash
+git clone https://github.com/tzoorlee/DM-Second-Brain-app.git
+cd DM-Second-Brain-app && pnpm install
+cp .env.example .env.local   # then set VAULT_PATH=../your-campaign
+pnpm dev                     # open http://localhost:3000
+```
 
-1. Navigate to the `dashboard/` folder.
-2. Install dependencies (already initialized):
+The app checks the campaign's `dm-second-brain.json` (see [Vault format](#vault-format)),
+so it never opens a campaign it can't read safely. It is meant for `localhost` only.
 
-   ```bash
-   cd dashboard && pnpm install
-   ```
-
-3. Run the development server:
-
-   ```bash
-   pnpm dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-To open a campaign stored elsewhere (e.g. the bundled example), set `VAULT_PATH` in `dashboard/.env.local` — see [`dashboard/README.md`](dashboard/README.md).
-
-When you click **Save Session Recap**, the notes are saved directly to `raw/sessions/` ready for your AI agent to ingest.
-
-> The dashboard acts as **you, the DM** — the human who curates the sources — not
-> as the agent. That's why it's allowed to write to `raw/`, even though the agent
-> itself never does (see Rule #1 in `CLAUDE.md`).
+> The app acts as **you, the DM**, the human who curates the sources. It is not the
+> agent. That's why it's allowed to write to `raw/`, even though the agent itself never
+> does (see Rule #1 in `CLAUDE.md`).
 
 ## Optional tools (as your wiki grows)
 
@@ -198,7 +186,7 @@ None of these are needed to start — the `index.md` catalog is enough at small 
 But a long-running campaign can reach hundreds of pages, and that's when they help:
 
 - **[qmd](https://github.com/tobi/qmd)** — a local search engine for markdown files,
-  for the *agent* (the dashboard has its own search). Once your wiki passes ~100 pages,
+  for the *agent* (the companion app has its own search). Once your wiki passes ~100 pages,
   reading the index alone gets slow; qmd lets the agent search the wiki properly. Has
   both a CLI and an MCP server — see install instructions there. Mind the footprint:
   keyword search (`qmd search`) needs no models, but semantic search downloads

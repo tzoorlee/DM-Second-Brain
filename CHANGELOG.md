@@ -6,14 +6,24 @@ versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-### Added
-
-- `dm-second-brain.json` at the vault root, in the template and in the example. It declares the vault format (`vaultFormat: 1`) that apps such as the Companion Dashboard rely on. The README documents what format 1 covers.
-
 ### Planned
 
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
+
+## [0.4.0] - 2026-10-18
+
+### Removed
+
+- **The Companion Dashboard moved to its own repository**, [DM-Second-Brain-app](https://github.com/tzoorlee/DM-Second-Brain-app), with its history. `dashboard/` is no longer part of the template. Clone the app next to your campaign and set `VAULT_PATH` to open it.
+
+### Added
+
+- `dm-second-brain.json` at the vault root, in the template and in the example. It declares the vault format (`vaultFormat: 1`) that apps such as the companion app rely on. The README documents what format 1 covers.
+
+### Changed
+
+- README, `CLAUDE.md` and `examples/README.md` now point to the companion app's repository.
 
 ## [0.3.2] - 2026-10-18
 
