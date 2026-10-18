@@ -9,9 +9,9 @@ tags: [interlude]
 > elsewhere: the cult burned a village, an NPC moved to another city, a war broke out.
 >
 > It is history, not a plan: the agent processes it with the INTERLUDE INGEST operation
-> and creates or updates wiki pages as `established`, with `pg_known: false` unless the
-> interlude says the PCs know. Plans and ideas that haven't happened yet belong in
-> `raw/worldbuilding/` instead.
+> and creates or updates wiki pages as `established`, with `pg_known: false`
+> unless the interlude says the PCs know.
+> Plans and ideas that haven't happened yet belong in `raw/worldbuilding/` instead.
 
 ## File name and frontmatter
 

@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 >
-> - **Template version:** 0.5.1
+> - **Template version:** 0.6.0
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -28,12 +28,17 @@ Contains raw material produced by the DM:
 - `raw/sessions/` — notes or recaps of each session (`session-01.md`, `session-02.md`, ...)
 - `raw/house-rules.md` — custom mechanical rules of the table (see §8)
 - `raw/world-bible.md` — foundational lore and tone/style conventions (see §8)
-- `raw/srd/` — SRD 5.1 system material (monsters, spells, rules; see §8)
-- `raw/worldbuilding/` — design material created BEFORE play (see §2)
+- `raw/srd/` — SRD system material (monsters, spells, rules; see §8)
+- `raw/worldbuilding/` — design material: plans that haven't happened yet (see §2)
+- `raw/interludes/` — events that happened off-screen, between sessions (see INTERLUDE INGEST in §2)
+- `raw/setting/` — reference for a published setting or an inherited world (see §8)
 - `raw/` (root) — handouts, any other source document
 
 **ABSOLUTE RULE: you NEVER modify anything in `raw/`.** If a piece of information
 isn't derivable from `raw/`, it isn't canon. When in doubt, this is where you check.
+
+`.dm-second-brain/` at the vault root is the companion app's working folder (World Studio
+drafts and conversations). It is never a source and you never edit it.
 
 ### `wiki/` — What you build (WRITE)
 
@@ -89,6 +94,11 @@ first session. Identical to session ingest BUT with one key difference:
 - You may freely create cities, factions, NPCs, secrets, plot hooks.
   This way, from session one, the DM has a queryable world.
 
+Design goes on after play starts. Once `raw/sessions/` holds a session, new design
+material arrives as new dated files, `raw/worldbuilding/YYYY-MM-DD-<slug>.md`: ingest each
+new file once, in date order, checking it against the established wiki. A file that
+already has a `log.md` line is not ingested again unless the DM asks.
+
 ### INGEST — the post-session workflow
 
 When the DM adds a file to `raw/sessions/`. Proceed as follows:
@@ -108,6 +118,19 @@ When the DM adds a file to `raw/sessions/`. Proceed as follows:
 8. **Index + Log**: update `index.md` and append a line to `log.md`.
 
 A session typically touches 10-20 pages. Proceed one session at a time.
+
+### INTERLUDE INGEST — events off-screen
+
+When the DM adds a file to `raw/interludes/`: things the DM declares happened between
+sessions, while the PCs were elsewhere. Proceed as for INGEST, with these differences:
+
+- Pages you create or change are `established`: it is history, not design.
+- They get `pg_known: false` unless the interlude says the PCs know. When a later session
+  shows the PCs learning it, promote it as in §6.
+- Date events with the interlude's `date_in_world`; `first_seen`/`last_updated` use its
+  `after_session`.
+- Log it with type `interlude`:
+  `## [<date_in_world> | after session-NN] interlude — <title>`.
 
 ### QUERY — prep and consultation
 
@@ -149,6 +172,8 @@ When the DM asks for it periodically. Scan and report by severity:
 - **Public pages linking to hidden ones** outside `## Secrets (DM only)`
 - **Hidden entities leaking**: a history page whose `pg_known` differs from its subject's,
   a public page's link field pointing to a hidden page
+- **Unprocessed sources**: files in `raw/interludes/` or dated files in
+  `raw/worldbuilding/` that no `log.md` line names yet
 - **Old-style pages** (minor): links by title or path, `city_page` instead of
   `subject`, a secrets heading other than `## Secrets (DM only)`
   Report by severity (critical / medium / minor) and propose fixes. Do not apply them
@@ -162,7 +187,7 @@ When the DM asks for it periodically. Scan and report by severity:
 fields, `status` values, sections, link fields and back-links. Follow the type's card
 whenever you create or update a page. It is at the template's root; in a campaign created
 by the companion app it may be missing, so read it at
-https://github.com/tzoorlee/DM-Second-Brain/blob/v0.5.1/TEMPLATES.md.
+https://github.com/tzoorlee/DM-Second-Brain/blob/v0.6.0/TEMPLATES.md.
 
 In short:
 
@@ -199,6 +224,11 @@ nouns exactly as the DM uses them.
   exactly like that. As a safety net the companion app also hides any level-2 heading naming
   the DM or GM (such as `## Segreti (solo DM)`), but a heading without that word, such as
   `## Segreti`, would show the secrets to the players.
+- The headings of `raw/world-bible.md` (`## Campaign`, `## Setting`, `## Tone and
+  Atmosphere`, `## Lore Pillars (immutable truths)`, `## Naming Conventions`,
+  `## Basic Geography`, `## Cosmology`, `## Things that do NOT exist in this world`,
+  `## Style notes for the agent`): the app's World Studio finds sections by them. If you
+  draft a world-bible for the DM, keep them in English.
 
 ---
 
@@ -325,8 +355,10 @@ Each line starts with a consistent prefix to stay parseable:
 
 ## 8. THE DM'S CUSTOM RULES
 
-Three files in `raw/` define the campaign's foundations. They are **canon** on par
-with sessions: you read them, never modify them, and consult them at the right moments.
+Three files and folders in `raw/` define the campaign's foundations — house rules,
+world-bible and SRD. They are **canon** on par with sessions: you read them, never modify
+them, and consult them at the right moments. `raw/setting/` (below) is reference material,
+canon only through what the DM approved.
 
 ### `raw/house-rules.md` — mechanical rules
 
@@ -338,7 +370,10 @@ The table's house rules (crits, rest, magic, death, character creation). Use the
 
 ### `raw/world-bible.md` — lore and style
 
-Foundational world truths and tone/naming conventions. Use them when:
+Foundational world truths and tone/naming conventions. `## Campaign` holds the
+campaign's name, language, starting level, rules edition and start date; `## Setting`
+says whether the world is homebrew, published or mixed, its sources, and the DM's
+**deviations** from the published canon. Use them when:
 
 - creating a new entity: respect naming conventions and lore pillars
 - writing descriptions: stick to the established tone
@@ -348,9 +383,20 @@ Foundational world truths and tone/naming conventions. Use them when:
 **Precedence rule**: if `raw/sessions/` contradicts the world-bible, do NOT correct it
 on your own — flag it to the DM. It might be a DM mistake or an intentional change.
 
-### `raw/srd/` — system material (SRD 5.1)
+### `raw/setting/` — setting reference
 
-Monsters, spells, rules from SRD 5.1 (CC-BY-4.0 license). Canon as **system rule**,
+Notes on a published setting, excerpts from books the DM owns, or the history of another
+campaign whose world this one inherits (`from-<campaign-id>/`). Use them as a source, but:
+
+- only what the DM approved there is canon for this campaign;
+- the world-bible's Deviations win over published lore;
+- lore you know from outside `raw/` is never canon (rule 2), even for a famous setting.
+  Ask the DM, or suggest they add it to `raw/worldbuilding/`.
+
+### `raw/srd/` — system material
+
+Monsters, spells, rules from the SRD (5.1 or 5.2.1, as the world-bible's `## Campaign`
+says; CC-BY-4.0 license). Canon as **system rule**,
 distinct from the DM's world (world-bible) and the DM's variants (house-rules). When
 creating a monster or NPC, you may base it on an SRD statblock. Don't confuse it with
 custom-world lore.
@@ -377,3 +423,4 @@ custom-world lore.
 15. Worldbuilding entities are born `prepared`; session entities are born `established`.
 16. When the PCs touch a `prepared` entity in play, promote it to `established`.
 17. Every new page follows its `TEMPLATES.md` card; a new entity type needs the DM's approval.
+18. Interludes are history the PCs didn't see: `established`, `pg_known: false` unless they say otherwise.
