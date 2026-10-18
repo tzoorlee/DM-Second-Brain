@@ -11,6 +11,12 @@ versioning follows [Semantic Versioning](https://semver.org/).
 - Field-test on a real campaign and refine CLAUDE.md
 - Optional: package as an installable agent skill
 
+## [0.2.2] - 2026-10-18
+
+### Changed
+
+- Switched dashboard package management from `npm` to `pnpm` (`pnpm-lock.yaml`, `packageManager` pinned in `package.json`).
+
 ## [0.2.1] - 2026-06-20
 
 ### Added

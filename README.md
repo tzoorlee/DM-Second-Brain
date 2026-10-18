@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.2.1-blue)
+![version](https://img.shields.io/badge/version-0.2.2-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -135,13 +135,13 @@ To start the dashboard:
 2. Install dependencies (already initialized):
 
    ```bash
-   cd dashboard && npm install
+   cd dashboard && pnpm install
    ```
 
 3. Run the development server:
 
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
