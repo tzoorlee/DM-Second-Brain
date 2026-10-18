@@ -54,6 +54,9 @@ The interlinked wiki you maintain. Subfolders:
 - `index.md` — catalog of every page
 - `log.md` — append-only chronological record of operations
 
+`dm-second-brain.json` at the vault root records the vault format that apps rely on
+(see README). Never edit it on your own.
+
 ### `output/` — Generated material (WRITE)
 
 Session prep, player-facing recaps, "previously on..." summaries, narrative maps.

@@ -107,8 +107,32 @@ your-campaign/
 │   ├── index.md            # catalog of every page
 │   └── log.md              # append-only history of operations
 ├── output/                 # session prep, player recaps (generated, not canon)
-└── CLAUDE.md               # the agent's rulebook — the heart of the system
+├── CLAUDE.md               # the agent's rulebook — the heart of the system
+└── dm-second-brain.json    # vault format marker, read by apps (see below)
 ```
+
+## Vault format
+
+A campaign folder is a **vault**. Apps such as the Companion Dashboard read it, and
+`dm-second-brain.json` at its root says which format it follows:
+
+```json
+{ "vaultFormat": 1 }
+```
+
+The number changes only when the parts that apps rely on change. It does not change with
+every template release. **Format 1** means:
+
+- the `raw/` and `wiki/` folders, laid out as shown above;
+- frontmatter keys and values in English: `type`, `status`, `canon_status`, `pg_known`,
+  `first_seen`, `last_updated`, `tags`;
+- `[[wikilinks]]` that point to a page's file name or title;
+- DM-only text: pages in `wiki/secrets/`, entities with `pg_known: false`, and an inline
+  `## Secrets (DM only)` section that runs to the end of its page;
+- `_template-*.md`, `index.md` and `log.md` are scaffolding, not campaign pages.
+
+An app declares which formats it supports. Leave the file as it is, unless an upgrade
+note for the template tells you to change it.
 
 ## Git as a time machine
 

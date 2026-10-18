@@ -6,6 +6,10 @@ versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `dm-second-brain.json` at the vault root, in the template and in the example. It declares the vault format (`vaultFormat: 1`) that apps such as the Companion Dashboard rely on. The README documents what format 1 covers.
+
 ### Planned
 
 - Field-test on a real campaign and refine CLAUDE.md
