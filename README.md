@@ -1,6 +1,6 @@
 # 🎲 Dungeon Master Second Brain
 
-![version](https://img.shields.io/badge/version-0.4.0-blue)
+![version](https://img.shields.io/badge/version-0.5.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 **An LLM-maintained, self-consistent wiki for your Dungeons & Dragons 5e campaign.**
@@ -101,14 +101,30 @@ your-campaign/
 │   ├── house-rules.md      # your mechanical variants
 │   └── world-bible.md      # your lore pillars and tone
 ├── wiki/                   # the agent builds and maintains everything here
-│   ├── world/  locations/  characters/  factions/
-│   ├── quests/  items/  events/  secrets/
+│   ├── world/  adventures/  characters/{pcs,npcs}/
+│   ├── locations/{regions,cities,places,dungeons}/
+│   ├── factions/  deities/  creatures/  lore/
+│   ├── quests/{active,completed}/  items/  events/  secrets/
 │   ├── index.md            # catalog of every page
 │   └── log.md              # append-only history of operations
 ├── output/                 # session prep, player recaps (generated, not canon)
 ├── CLAUDE.md               # the agent's rulebook — the heart of the system
+├── TEMPLATES.md            # the rules for every page type, for you and the agent
 └── dm-second-brain.json    # vault format marker, read by apps (see below)
 ```
+
+## Page templates
+
+Every page type (NPC, city, quest, adventure, deity...) has a template,
+`_template-<type>.md`, in its folder, and a card in [`TEMPLATES.md`](TEMPLATES.md) with
+its fields, sections and links. You and the agent follow the same rules, so pages written
+by hand and pages written on ingest look the same. In short:
+
+- the file name is the page's **slug** (`elder-maren.md`) and never changes;
+- links use it: `[[elder-maren|Elder Maren]]` in the text, `"[[elder-maren]]"` in the
+  frontmatter, so they work in Obsidian, in the companion app and in lint;
+- link fields such as `location`, `faction`, `owner` or a quest's `requires` connect
+  pages, and the page they point to links back.
 
 ## Vault format
 

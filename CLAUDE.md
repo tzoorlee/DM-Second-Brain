@@ -9,7 +9,7 @@ story, and asks the questions.
 
 > **CONFIGURATION — set this before first use:**
 >
-> - **Template version:** 0.4.0
+> - **Template version:** 0.5.0
 > - **Output language:** English _(change to your preferred language; the agent writes all wiki pages in it)_
 > - **Campaign name:** _(set in README and index.md)_
 > - **Setting:** _(your world, or a published one)_
@@ -40,16 +40,21 @@ isn't derivable from `raw/`, it isn't canon. When in doubt, this is where you ch
 The interlinked wiki you maintain. Subfolders:
 
 - `world/` — world overview, global timeline, cosmology, in-world calendar
+- `adventures/` — story arcs that group several quests
+- `locations/regions/` — geographic regions (state + history in SEPARATE files, see §4)
 - `locations/cities/` — cities (state + history in SEPARATE files, see §4)
-- `locations/regions/` — geographic regions
+- `locations/places/` — places inside a city or region: taverns, temples, shops
 - `locations/dungeons/` — dungeons and adventure sites
 - `characters/pcs/` — player characters
 - `characters/npcs/` — NPCs (state + history TOGETHER in one page, see §4)
-- `factions/` — guilds, cults, houses, organizations
-- `quests/active/` — open plot threads
+- `factions/` — guilds, cults, houses, organizations (state + history in SEPARATE files)
+- `deities/` — gods and worshipped powers
+- `creatures/` — monsters and peoples invented for this campaign
+- `quests/active/` — open and not-yet-taken plot threads
 - `quests/completed/` — concluded threads (moved here, never deleted)
 - `items/` — significant items and artifacts
 - `events/` — things that happened, dated in the in-world calendar
+- `lore/` — topics that are neither places nor people: languages, legends, old wars
 - `secrets/` — plots and reveals the PCs do NOT know yet (see §6)
 - `index.md` — catalog of every page
 - `log.md` — append-only chronological record of operations
@@ -77,7 +82,8 @@ calendar in `world/calendar.md`.
 When the DM adds material to `raw/worldbuilding/` to build the world before the
 first session. Identical to session ingest BUT with one key difference:
 
-- Every entity you create is born with `canon_status: prepared`.
+- Every entity you create is born with `canon_status: prepared` and `first_seen: design`,
+  following its card in `TEMPLATES.md` (back-links included).
 - Do NOT date events in the log as "happened": they are design, not history.
 - Log it with type `design` instead of `ingest`.
 - You may freely create cities, factions, NPCs, secrets, plot hooks.
@@ -91,13 +97,14 @@ When the DM adds a file to `raw/sessions/`. Proceed as follows:
 2. **Discuss** the key takeaways with the DM before writing: who appeared, what
    changed, which threads moved. Wait for confirmation on ambiguous points.
 3. **Events**: create/update pages in `events/`, always dated in the in-world calendar.
-4. **Touched entities**: update every NPC, city, faction, item involved. Update both
-   the "current state" and the "history/chronology" section.
+4. **Touched entities**: create or update every NPC, city, faction, item involved,
+   following its card in `TEMPLATES.md`. Update both the "current state" and the
+   "history/chronology" section, and the back-links the card requires.
    **If an entity was `prepared` and the PCs interacted with it, promote it to `established`.**
 5. **Quests**: update thread status; move concluded ones to `completed/`.
 6. **Secrets**: if the session revealed to the PCs something previously in `secrets/`,
    MOVE that information from the secret area to the public wiki.
-7. **Wikilinks**: link every entity with `[[...]]`.
+7. **Wikilinks**: link every entity as `[[slug|Shown name]]` (see `TEMPLATES.md`).
 8. **Index + Log**: update `index.md` and append a line to `log.md`.
 
 A session typically touches 10-20 pages. Proceed one session at a time.
@@ -134,6 +141,13 @@ When the DM asks for it periodically. Scan and report by severity:
 - **Current state misaligned** with chronology (history says X, state says Y)
 - **`prepared` entities never promoted** despite PCs interacting with them (and vice versa)
 - **Gaps** that might be needed before the next session
+- **Link fields** pointing to the wrong type of page, or **back-links** missing on the
+  target (see the table in `TEMPLATES.md` §5)
+- **Quest dependencies**: `requires` cycles, `active` quests whose required quests
+  aren't `completed`, adventures that don't list a quest pointing to them
+- **Public pages linking to hidden ones** outside `## Secrets (DM only)`
+- **Old-style pages** (minor): links by title or path, `city_page` instead of
+  `subject`, a secrets heading other than `## Secrets (DM only)`
   Report by severity (critical / medium / minor) and propose fixes. Do not apply them
   without the DM's consent.
 
@@ -141,22 +155,38 @@ When the DM asks for it periodically. Scan and report by severity:
 
 ## 3. PAGE FORMAT
 
-Every wiki page starts with YAML frontmatter:
+**`TEMPLATES.md` is the rulebook for every page**: the page types, their folders,
+fields, `status` values, sections, link fields and back-links. Follow the type's card
+whenever you create or update a page. It is at the template's root; in a campaign created
+by the companion app it may be missing, so read it at
+https://github.com/tzoorlee/DM-Second-Brain/blob/v0.5.0/TEMPLATES.md.
+
+In short:
+
+- Each page type has a template, `_template-<type>.md`, in its folder. Copy it.
+- The file name is the page's **slug** (`elder-maren.md`): lowercase, dashes, unique
+  across the wiki, never renamed.
+- Links use the slug: `[[elder-maren|Elder Maren]]` in the text, `"[[elder-maren]]"`
+  in the frontmatter. Never link by title or path.
+- Every page starts with YAML frontmatter:
 
 ```yaml
 ---
-type: npc # npc | pc | city | region | dungeon | faction | quest | item | event | secret
+type: npc # one of the types in TEMPLATES.md
 tags: [silverbrook, guard, ally]
-status: alive # alive | dead | active | completed | destroyed | unknown
+status: alive # values depend on the type
 canon_status: prepared # prepared (worldbuilding) | established (confirmed by play)
-first_seen: session-03
+first_seen: session-03 # session-NN | design | setup
 last_updated: session-14
 pg_known: true # do the PCs know about this entity?
+faction: "[[silverbrook-guard]]" # link fields depend on the type
+location: "[[silverbrook]]"
 ---
 ```
 
-Then the body in markdown. Use `[[wikilink]]` for EVERY reference to another entity.
-Write in the configured output language. Keep proper nouns exactly as the DM uses them.
+Then the body in markdown, with the sections of the type's template, in order. Link
+EVERY reference to another entity. Write in the configured output language. Keep proper
+nouns exactly as the DM uses them.
 
 **Fixed markers stay in English, whatever the output language.** The companion app reads them:
 
@@ -187,24 +217,26 @@ They are self-contained entities. Structure:
 ## Profile
 [appearance, personality, voice, mannerisms]
 ## History / Chronology
-- Sessions 1-13: captain of the [[Silverbrook]] guard
+- Sessions 1-13: captain of the [[silverbrook|Silverbrook]] guard
 - Session 14: killed by the PCs during the assault on the keep
 ## Relationships
-- [[Lord Brennan]] — superior
+- [[lord-brennan|Lord Brennan]] — superior
 ## Secrets (DM only)
 - (any minor inline secrets, see §6)
 ```
 
 ### Cities, Regions, Factions → state and history in SEPARATE files
 
-They grow too large. For each city use two linked files:
+They grow too large. For each city (and likewise each region and faction) use two linked
+files:
 
 - `cities/silverbrook.md` → CURRENT STATE (who rules now, present situation,
   resident NPCs, factions present, notable places). Compact and always current.
 - `cities/silverbrook-history.md` → CHRONOLOGY (dated events that changed the city
   over time). Append-only, grows with every relevant session.
 
-The two pages link to each other in the frontmatter and body.
+The two pages link to each other: `history_page` on the state page, `subject` on the
+history page (see `TEMPLATES.md`).
 
 ---
 
@@ -330,3 +362,4 @@ custom-world lore.
 14. If a session contradicts the world-bible or house-rules, flag it, don't fix it yourself.
 15. Worldbuilding entities are born `prepared`; session entities are born `established`.
 16. When the PCs touch a `prepared` entity in play, promote it to `established`.
+17. Every new page follows its `TEMPLATES.md` card; a new entity type needs the DM's approval.
