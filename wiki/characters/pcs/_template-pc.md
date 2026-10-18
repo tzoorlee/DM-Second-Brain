@@ -6,7 +6,7 @@ canon_status: prepared # prepared (worldbuilding) | established (confirmed by pl
 first_seen: session-NN # session-NN | design | setup
 last_updated: session-NN # session-NN | design | setup
 pg_known: true # do the PCs know about this?
-faction: "" # [[slug]] of their faction, if any
+faction: "" # [[slug]] of their faction, if any; empty if the faction is hidden
 location: "" # [[slug]] of a region, city, location or dungeon
 player: "" # the player's name (plain text)
 ---
@@ -24,7 +24,7 @@ player: "" # the player's name (plain text)
 - **Bonds and flaws**: 
 
 ## Possessions
-- [[item-slug|Item Name]] — (every item whose `owner` points here)
+- [[item-slug|Item Name]] — (every item or place whose `owner` points here)
 
 ## History / Chronology
 - Session NN: (what they did)

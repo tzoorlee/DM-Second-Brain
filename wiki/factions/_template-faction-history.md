@@ -4,7 +4,7 @@ tags: [] # lowercase-with-dashes
 subject: "" # [[slug]] of the faction this chronology belongs to
 canon_status: established # prepared (worldbuilding) | established (confirmed by play)
 last_updated: session-NN # session-NN | design | setup
-pg_known: true # do the PCs know about this?
+pg_known: true # the same as the faction's pg_known
 ---
 
 # Chronology of Faction Name

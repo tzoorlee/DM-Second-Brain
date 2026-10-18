@@ -6,7 +6,7 @@ canon_status: prepared # prepared (worldbuilding) | established (confirmed by pl
 first_seen: session-NN # session-NN | design | setup
 last_updated: session-NN # session-NN | design | setup
 pg_known: true # do the PCs know about this?
-faction: "" # [[slug]] of their faction, if any
+faction: "" # [[slug]] of their faction, if any; empty if the faction is hidden
 location: "" # [[slug]] of a region, city, location or dungeon
 ---
 
@@ -23,7 +23,7 @@ location: "" # [[slug]] of a region, city, location or dungeon
 - **Goal**: (what they want)
 
 ## Possessions
-- [[item-slug|Item Name]] — (every item whose `owner` points here)
+- [[item-slug|Item Name]] — (every item or place whose `owner` points here)
 
 ## Quests Given
 - [[quest-slug|Quest Title]] — (every quest whose `giver` points here)

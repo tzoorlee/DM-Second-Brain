@@ -6,7 +6,7 @@ canon_status: prepared # prepared (worldbuilding) | established (confirmed by pl
 first_seen: session-NN # session-NN | design | setup
 last_updated: session-NN # session-NN | design | setup
 pg_known: true # do the PCs know about this?
-location: "" # [[slug]] of a region, city, location or dungeon
+location: "" # [[slug]] of the city or region it is in or near
 faction: "" # [[slug]] of the faction that controls it
 ---
 

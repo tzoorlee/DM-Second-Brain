@@ -48,6 +48,10 @@ Every entity page starts with:
 
 Then the type's own fields, listed in its card. Fields with no value stay as `""` or `[]`.
 
+`_template-*.md`, `index.md` and `log.md` are not entity pages: they have no base
+frontmatter, the templates' `[[...-slug]]` links are placeholders, and nothing needs to
+link to them. Lint skips them.
+
 **Fixed markers stay in English**, whatever language the wiki is written in: frontmatter
 keys and values, and the heading `## Secrets (DM only)`. The companion app reads them.
 
@@ -58,6 +62,12 @@ keys and values, and the heading `## Secrets (DM only)`. The companion app reads
 - A public page (`pg_known: true`) never links to a hidden page (`pg_known: false`, or any
   `secret`) outside that section, in the text or in the frontmatter. The link itself
   would tell the players the hidden page exists.
+- So a link field of a public page never points to a hidden page. If a public NPC
+  secretly belongs to a hidden faction, leave the NPC's `faction` empty and write the
+  membership in the NPC's `## Secrets (DM only)`; the hidden faction still lists the NPC
+  in its `## Key Members`.
+- A history page has the same `pg_known` as its subject: the chronology of a hidden
+  faction is hidden too.
 - Plots large enough to drive an arc get their own page in `secrets/`.
 
 ### History pages
@@ -93,11 +103,14 @@ NPCs, PCs, places, dungeons and items keep their chronology inside their own pag
    depending on the source, links as `"[[slug]]"`. Delete the inline `#` comments.
 5. Write the sections in the template's order. Keep every heading, even when its
    content is `- (none yet)`. Link every entity you name.
-6. **Add the back-links**: each link field in the card says which list on the other
+6. For a `city`, `region` or `faction`, also create its history page from
+   `_template-<type>-history.md` (slug `<slug>-history`, same `pg_known`), and fill
+   `history_page` and `subject` so the two pages point at each other.
+7. **Add the back-links**: each link field in the card says which list on the other
    page must link back here. For example, an NPC with `location: "[[silverbrook]]"` is
    added to Silverbrook's `## Resident NPCs`.
-7. Add the page to `index.md` under its section, with a one-line summary.
-8. The agent also appends a line to `log.md` (see `CLAUDE.md` §7).
+8. Add the page to `index.md` under its section, with a one-line summary.
+9. The agent also appends a line to `log.md` (see `CLAUDE.md` §7).
 
 ---
 
@@ -162,13 +175,13 @@ its quests end. Adventures are never moved or deleted.
 |---|---|---|
 | `status` | yes | alive, dead, missing, retired |
 | `player` | no | the player's name, plain text |
-| `faction` | no | `[[slug]]` of a `faction` |
+| `faction` | no | `[[slug]]` of a `faction`; empty if the faction is hidden (see [Secrets](#secrets)) |
 | `location` | no | `[[slug]]` of a `region`, `city`, `location` or `dungeon` |
 
 **Sections:** Current State · Profile · Possessions · History / Chronology ·
 Relationships · Secrets (DM only).
 **Back-links:** a `faction` lists the PC in its `## Key Members`. `## Possessions` lists
-every item whose `owner` points here. PCs move, so their `location` needs no back-link.
+every item and place whose `owner` points here. PCs move, so their `location` needs no back-link.
 
 ### `npc`
 
@@ -178,15 +191,15 @@ every item whose `owner` points here. PCs move, so their `location` needs no bac
 | Field | Required | Values |
 |---|---|---|
 | `status` | yes | alive, dead, missing, unknown |
-| `faction` | no | `[[slug]]` of a `faction` |
+| `faction` | no | `[[slug]]` of a `faction`; empty if the faction is hidden and the NPC public (see [Secrets](#secrets)) |
 | `location` | no | `[[slug]]` of a `region`, `city`, `location` or `dungeon` |
 
 **Sections:** Current State · Profile · Possessions · Quests Given · History /
 Chronology · Relationships · Secrets (DM only).
 **Back-links:** the `faction`'s `## Key Members`; the `location`'s `## Resident NPCs`
 (city), `## People` (location) or `## Inhabitants` (dungeon), none for a region.
-`## Possessions` lists the items whose `owner` points here, `## Quests Given` the quests
-whose `giver` points here.
+`## Possessions` lists the items and places whose `owner` points here, `## Quests Given`
+the quests whose `giver` points here.
 **Lifecycle:** a dead NPC stays, with `status: dead` and its legacy in Current State.
 
 ### `region`
@@ -213,6 +226,7 @@ every city, place and dungeon that points here.
 | Field | Required | Values |
 |---|---|---|
 | `subject` | yes | `[[slug]]` of the `region` |
+| `pg_known` | yes | the same as the region's |
 
 ### `city`
 
@@ -238,6 +252,7 @@ places and dungeons whose `location` points here; `## Resident NPCs` the NPCs.
 | Field | Required | Values |
 |---|---|---|
 | `subject` | yes | `[[slug]]` of the `city` (older campaigns: `city_page`) |
+| `pg_known` | yes | the same as the city's |
 
 ### `location`
 
@@ -300,6 +315,7 @@ places it owns; `## Quests Given` the quests it gave.
 | Field | Required | Values |
 |---|---|---|
 | `subject` | yes | `[[slug]]` of the `faction` |
+| `pg_known` | yes | the same as the faction's: a hidden faction has a hidden chronology |
 
 ### `deity`
 
@@ -350,6 +366,9 @@ link to them in `raw/srd/`.
 - A quest can't be `active` while a quest in its `requires` isn't `completed`.
 - `completed`, `failed` and `abandoned` quests move to `quests/completed/`, slug unchanged.
 - No dependency cycles: a quest never requires, directly or indirectly, itself.
+- If a required quest ends `failed` or `abandoned`, the DM decides: take it out of
+  `requires` (the story found another way) or set the dependent quest to `abandoned`.
+  Lint reports the case until then.
 
 ### `item`
 

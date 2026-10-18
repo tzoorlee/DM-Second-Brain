@@ -134,7 +134,8 @@ When the DM asks a question ("which open threads involve the thieves' guild?",
 When the DM asks for it periodically. Scan and report by severity:
 
 - **Timeline contradictions** (a dead NPC reappearing alive)
-- **Broken wikilinks** or orphan pages with no inbound links
+- **Broken wikilinks** or orphan pages with no inbound links (`_template-*.md`,
+  `index.md` and `log.md` are not pages: skip them)
 - **NPCs without motivation** consistent with their faction
 - **Foreshadowing/secrets never resolved** left dangling
 - **Locations or entities mentioned** in `raw/` but lacking a dedicated page
@@ -146,6 +147,8 @@ When the DM asks for it periodically. Scan and report by severity:
 - **Quest dependencies**: `requires` cycles, `active` quests whose required quests
   aren't `completed`, adventures that don't list a quest pointing to them
 - **Public pages linking to hidden ones** outside `## Secrets (DM only)`
+- **Hidden entities leaking**: a history page whose `pg_known` differs from its subject's,
+  a public page's link field pointing to a hidden page
 - **Old-style pages** (minor): links by title or path, `city_page` instead of
   `subject`, a secrets heading other than `## Secrets (DM only)`
   Report by severity (critical / medium / minor) and propose fixes. Do not apply them
